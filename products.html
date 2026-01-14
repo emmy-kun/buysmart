@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BuySmart | Products</title>
+
+  <link rel="stylesheet" href="css/product.css">
+  <link rel="stylesheet" href="css/base.css">
+
+  <style>
+    .cart-actions {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ================= HEADER ================= -->
+  <header class="main-header">
+    <a href="cart.html" class="cart-link">
+      🛒
+      <span class="cart-badge" id="cartCount">0</span>
+    </a>
+
+    <a href="index.html" class="logo-area">
+      <img src="images/logo (2).png" alt="BuySmart Logo" class="logo-img">
+    </a>
+
+    <button class="hamburger" id="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+     <nav id="navMenu">
+      <a href="index.html">Home</a>
+      <a href="products.html">products</a>
+      <a href="checkout.html">Checkout</a>
+      <a href="auth.html">signup</a>
+      <a href="profile.html">profile</a>
+    </nav>
+  </header>
+
+  <!-- ================= SEARCH BAR ================= -->
+  <section class="controls reveal">
+    <div class="search-wrapper">
+      <h2 class="search-title">Find What You’re Looking For</h2>
+      <p class="search-subtitle">
+        Search across all categories and discover great deals.
+      </p>
+
+      <div class="search-box">
+        <input type="text" id="searchInput" placeholder="Search for products, brands and categories...">
+        <button class="search-btn">🔍</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= PRODUCTS ================= -->
+  <section class="products">
+    <div class="product-grid">
+
+      <!-- PRODUCT CARD -->
+      <div class="product reveal">
+        <span class="product-badge">New</span>
+        <img src="images/black-cordless-headphones-gray-textile-min.jpg" class="product-img">
+        <h3>Wireless Headphones</h3>
+        <p class="desc">High-quality sound with noise cancellation.</p>
+        <p class="price">₦25,000</p>
+        <div class="cart-actions">
+          <button class="add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product reveal">
+        <span class="product-badge">Popular</span>
+        <img src="images/11873.jpg" class="product-img">
+        <h3>Smart Watch</h3>
+        <p class="desc">Track your fitness and stay connected.</p>
+        <p class="price">₦18,500</p>
+        <div class="cart-actions">
+          <button class="add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product reveal">
+        <img src="images/man-packing-away-his-laptop-into-bag-min.jpg" class="product-img">
+        <h3>Laptop Backpack</h3>
+        <p class="desc">Durable backpack for work and travel.</p>
+        <p class="price">₦12,000</p>
+        <div class="cart-actions">
+          <button class="add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product reveal">
+        <img src="images/wireless-speaker-amplifier-black-min.jpg" class="product-img">
+        <h3>Bluetooth Speaker</h3>
+        <p class="desc">Portable speaker with deep bass.</p>
+        <p class="price">₦15,000</p>
+        <div class="cart-actions">
+          <button class="add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product reveal">
+        <span class="product-badge">New</span>
+        <img src="images/black-cordless-headphones-gray-textile-min.jpg" class="product-img">
+        <h3>Wireless Headphones</h3>
+        <p class="desc">High-quality sound with noise cancellation.</p>
+        <p class="price">₦25,000</p>
+        <div class="cart-actions">
+          <button class="add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product reveal">
+        <span class="product-badge">Popular</span>
+        <img src="images/11873.jpg" class="product-img">
+        <h3>Smart Watch</h3>
+        <p class="desc">Track your fitness and stay connected.</p>
+        <p class="price">₦18,500</p>
+        <div class="cart-actions">
+          <button class="add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product reveal">
+        <img src="images/man-packing-away-his-laptop-into-bag-min.jpg" class="product-img">
+        <h3>Laptop Backpack</h3>
+        <p class="desc">Durable backpack for work and travel.</p>
+        <p class="price">₦12,000</p>
+        <div class="cart-actions">
+          <button class="add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product reveal">
+        <img src="images/wireless-speaker-amplifier-black-min.jpg" class="product-img">
+        <h3>Bluetooth Speaker</h3>
+        <p class="desc">Portable speaker with deep bass.</p>
+        <p class="price">₦15,000</p>
+        <div class="cart-actions">
+          <button class="add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product reveal">
+        <span class="product-badge">New</span>
+        <img src="images/black-cordless-headphones-gray-textile-min.jpg" class="product-img">
+        <h3>Wireless Headphones</h3>
+        <p class="desc">High-quality sound with noise cancellation.</p>
+        <p class="price">₦25,000</p>
+        <div class="cart-actions">
+          <button class="add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product reveal">
+        <span class="product-badge">Popular</span>
+        <img src="images/11873.jpg" class="product-img">
+        <h3>Smart Watch</h3>
+        <p class="desc">Track your fitness and stay connected.</p>
+        <p class="price">₦18,500</p>
+        <div class="cart-actions">
+          <button class="add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product reveal">
+        <img src="images/man-packing-away-his-laptop-into-bag-min.jpg" class="product-img">
+        <h3>Laptop Backpack</h3>
+        <p class="desc">Durable backpack for work and travel.</p>
+        <p class="price">₦12,000</p>
+        <div class="cart-actions">
+          <button class="add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product reveal">
+        <img src="images/wireless-speaker-amplifier-black-min.jpg" class="product-img">
+        <h3>Bluetooth Speaker</h3>
+        <p class="desc">Portable speaker with deep bass.</p>
+        <p class="price">₦15,000</p>
+        <div class="cart-actions">
+          <button class="add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product reveal">
+        <span class="product-badge">New</span>
+        <img src="images/black-cordless-headphones-gray-textile-min.jpg" class="product-img">
+        <h3>Wireless Headphones</h3>
+        <p class="desc">High-quality sound with noise cancellation.</p>
+        <p class="price">₦25,000</p>
+        <div class="cart-actions">
+          <button class="add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product reveal">
+        <span class="product-badge">Popular</span>
+        <img src="images/11873.jpg" class="product-img">
+        <h3>Smart Watch</h3>
+        <p class="desc">Track your fitness and stay connected.</p>
+        <p class="price">₦18,500</p>
+        <div class="cart-actions">
+          <button class="add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product reveal">
+        <img src="images/man-packing-away-his-laptop-into-bag-min.jpg" class="product-img">
+        <h3>Laptop Backpack</h3>
+        <p class="desc">Durable backpack for work and travel.</p>
+        <p class="price">₦12,000</p>
+        <div class="cart-actions">
+          <button class="add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product reveal">
+        <img src="images/wireless-speaker-amplifier-black-min.jpg" class="product-img">
+        <h3>Bluetooth Speaker</h3>
+        <p class="desc">Portable speaker with deep bass.</p>
+        <p class="price">₦15,000</p>
+        <div class="cart-actions">
+          <button class="add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product reveal">
+        <span class="product-badge">New</span>
+        <img src="images/black-cordless-headphones-gray-textile-min.jpg" class="product-img">
+        <h3>Wireless Headphones</h3>
+        <p class="desc">High-quality sound with noise cancellation.</p>
+        <p class="price">₦25,000</p>
+        <div class="cart-actions">
+          <button class="add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product reveal">
+        <span class="product-badge">Popular</span>
+        <img src="images/11873.jpg" class="product-img">
+        <h3>Smart Watch</h3>
+        <p class="desc">Track your fitness and stay connected.</p>
+        <p class="price">₦18,500</p>
+        <div class="cart-actions">
+          <button class="add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product reveal">
+        <img src="images/man-packing-away-his-laptop-into-bag-min.jpg" class="product-img">
+        <h3>Laptop Backpack</h3>
+        <p class="desc">Durable backpack for work and travel.</p>
+        <p class="price">₦12,000</p>
+        <div class="cart-actions">
+          <button class="add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product reveal">
+        <img src="images/wireless-speaker-amplifier-black-min.jpg" class="product-img">
+        <h3>Bluetooth Speaker</h3>
+        <p class="desc">Portable speaker with deep bass.</p>
+        <p class="price">₦15,000</p>
+        <div class="cart-actions">
+          <button class="add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product reveal">
+        <span class="product-badge">New</span>
+        <img src="images/black-cordless-headphones-gray-textile-min.jpg" class="product-img">
+        <h3>Wireless Headphones</h3>
+        <p class="desc">High-quality sound with noise cancellation.</p>
+        <p class="price">₦25,000</p>
+        <div class="cart-actions">
+          <button class="add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product reveal">
+        <span class="product-badge">Popular</span>
+        <img src="images/11873.jpg" class="product-img">
+        <h3>Smart Watch</h3>
+        <p class="desc">Track your fitness and stay connected.</p>
+        <p class="price">₦18,500</p>
+        <div class="cart-actions">
+          <button class="add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product reveal">
+        <img src="images/man-packing-away-his-laptop-into-bag-min.jpg" class="product-img">
+        <h3>Laptop Backpack</h3>
+        <p class="desc">Durable backpack for work and travel.</p>
+        <p class="price">₦12,000</p>
+        <div class="cart-actions">
+          <button class="add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product reveal">
+        <img src="images/wireless-speaker-amplifier-black-min.jpg" class="product-img">
+        <h3>Bluetooth Speaker</h3>
+        <p class="desc">Portable speaker with deep bass.</p>
+        <p class="price">₦15,000</p>
+        <div class="cart-actions">
+          <button class="add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product reveal">
+        <span class="product-badge">New</span>
+        <img src="images/black-cordless-headphones-gray-textile-min.jpg" class="product-img">
+        <h3>Wireless Headphones</h3>
+        <p class="desc">High-quality sound with noise cancellation.</p>
+        <p class="price">₦25,000</p>
+        <div class="cart-actions">
+          <button class="add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product reveal">
+        <span class="product-badge">Popular</span>
+        <img src="images/11873.jpg" class="product-img">
+        <h3>Smart Watch</h3>
+        <p class="desc">Track your fitness and stay connected.</p>
+        <p class="price">₦18,500</p>
+        <div class="cart-actions">
+          <button class="add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product reveal">
+        <img src="images/man-packing-away-his-laptop-into-bag-min.jpg" class="product-img">
+        <h3>Laptop Backpack</h3>
+        <p class="desc">Durable backpack for work and travel.</p>
+        <p class="price">₦12,000</p>
+        <div class="cart-actions">
+          <button class="add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product reveal">
+        <img src="images/wireless-speaker-amplifier-black-min.jpg" class="product-img">
+        <h3>Bluetooth Speaker</h3>
+        <p class="desc">Portable speaker with deep bass.</p>
+        <p class="price">₦15,000</p>
+        <div class="cart-actions">
+          <button class="add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product reveal">
+        <span class="product-badge">New</span>
+        <img src="images/black-cordless-headphones-gray-textile-min.jpg" class="product-img">
+        <h3>Wireless Headphones</h3>
+        <p class="desc">High-quality sound with noise cancellation.</p>
+        <p class="price">₦25,000</p>
+        <div class="cart-actions">
+          <button class="add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product reveal">
+        <span class="product-badge">Popular</span>
+        <img src="images/11873.jpg" class="product-img">
+        <h3>Smart Watch</h3>
+        <p class="desc">Track your fitness and stay connected.</p>
+        <p class="price">₦18,500</p>
+        <div class="cart-actions">
+          <button class="add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product reveal">
+        <img src="images/man-packing-away-his-laptop-into-bag-min.jpg" class="product-img">
+        <h3>Laptop Backpack</h3>
+        <p class="desc">Durable backpack for work and travel.</p>
+        <p class="price">₦12,000</p>
+        <div class="cart-actions">
+          <button class="add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product reveal">
+        <img src="images/wireless-speaker-amplifier-black-min.jpg" class="product-img">
+        <h3>Bluetooth Speaker</h3>
+        <p class="desc">Portable speaker with deep bass.</p>
+        <p class="price">₦15,000</p>
+        <div class="cart-actions">
+          <button class="add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product reveal">
+        <span class="product-badge">New</span>
+        <img src="images/black-cordless-headphones-gray-textile-min.jpg" class="product-img">
+        <h3>Wireless Headphones</h3>
+        <p class="desc">High-quality sound with noise cancellation.</p>
+        <p class="price">₦25,000</p>
+        <div class="cart-actions">
+          <button class="add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product reveal">
+        <span class="product-badge">Popular</span>
+        <img src="images/11873.jpg" class="product-img">
+        <h3>Smart Watch</h3>
+        <p class="desc">Track your fitness and stay connected.</p>
+        <p class="price">₦18,500</p>
+        <div class="cart-actions">
+          <button class="add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product reveal">
+        <img src="images/man-packing-away-his-laptop-into-bag-min.jpg" class="product-img">
+        <h3>Laptop Backpack</h3>
+        <p class="desc">Durable backpack for work and travel.</p>
+        <p class="price">₦12,000</p>
+        <div class="cart-actions">
+          <button class="add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product reveal">
+        <img src="images/wireless-speaker-amplifier-black-min.jpg" class="product-img">
+        <h3>Bluetooth Speaker</h3>
+        <p class="desc">Portable speaker with deep bass.</p>
+        <p class="price">₦15,000</p>
+        <div class="cart-actions">
+          <button class="add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product reveal">
+        <span class="product-badge">New</span>
+        <img src="images/black-cordless-headphones-gray-textile-min.jpg" class="product-img">
+        <h3>Wireless Headphones</h3>
+        <p class="desc">High-quality sound with noise cancellation.</p>
+        <p class="price">₦25,000</p>
+        <div class="cart-actions">
+          <button class="add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product reveal">
+        <span class="product-badge">Popular</span>
+        <img src="images/11873.jpg" class="product-img">
+        <h3>Smart Watch</h3>
+        <p class="desc">Track your fitness and stay connected.</p>
+        <p class="price">₦18,500</p>
+        <div class="cart-actions">
+          <button class="add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product reveal">
+        <img src="images/man-packing-away-his-laptop-into-bag-min.jpg" class="product-img">
+        <h3>Laptop Backpack</h3>
+        <p class="desc">Durable backpack for work and travel.</p>
+        <p class="price">₦12,000</p>
+        <div class="cart-actions">
+          <button class="add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product reveal">
+        <img src="images/wireless-speaker-amplifier-black-min.jpg" class="product-img">
+        <h3>Bluetooth Speaker</h3>
+        <p class="desc">Portable speaker with deep bass.</p>
+        <p class="price">₦15,000</p>
+        <div class="cart-actions">
+          <button class="add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product reveal">
+        <span class="product-badge">New</span>
+        <img src="images/black-cordless-headphones-gray-textile-min.jpg" class="product-img">
+        <h3>Wireless Headphones</h3>
+        <p class="desc">High-quality sound with noise cancellation.</p>
+        <p class="price">₦25,000</p>
+        <div class="cart-actions">
+          <button class="add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product reveal">
+        <span class="product-badge">Popular</span>
+        <img src="images/11873.jpg" class="product-img">
+        <h3>Smart Watch</h3>
+        <p class="desc">Track your fitness and stay connected.</p>
+        <p class="price">₦18,500</p>
+        <div class="cart-actions">
+          <button class="add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product reveal">
+        <img src="images/man-packing-away-his-laptop-into-bag-min.jpg" class="product-img">
+        <h3>Laptop Backpack</h3>
+        <p class="desc">Durable backpack for work and travel.</p>
+        <p class="price">₦12,000</p>
+        <div class="cart-actions">
+          <button class="add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product reveal">
+        <img src="images/wireless-speaker-amplifier-black-min.jpg" class="product-img">
+        <h3>Bluetooth Speaker</h3>
+        <p class="desc">Portable speaker with deep bass.</p>
+        <p class="price">₦15,000</p>
+        <div class="cart-actions">
+          <button class="add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product reveal">
+        <span class="product-badge">New</span>
+        <img src="images/black-cordless-headphones-gray-textile-min.jpg" class="product-img">
+        <h3>Wireless Headphones</h3>
+        <p class="desc">High-quality sound with noise cancellation.</p>
+        <p class="price">₦25,000</p>
+        <div class="cart-actions">
+          <button class="add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product reveal">
+        <span class="product-badge">Popular</span>
+        <img src="images/11873.jpg" class="product-img">
+        <h3>Smart Watch</h3>
+        <p class="desc">Track your fitness and stay connected.</p>
+        <p class="price">₦18,500</p>
+        <div class="cart-actions">
+          <button class="add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product reveal">
+        <img src="images/man-packing-away-his-laptop-into-bag-min.jpg" class="product-img">
+        <h3>Laptop Backpack</h3>
+        <p class="desc">Durable backpack for work and travel.</p>
+        <p class="price">₦12,000</p>
+        <div class="cart-actions">
+          <button class="add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product reveal">
+        <img src="images/wireless-speaker-amplifier-black-min.jpg" class="product-img">
+        <h3>Bluetooth Speaker</h3>
+        <p class="desc">Portable speaker with deep bass.</p>
+        <p class="price">₦15,000</p>
+        <div class="cart-actions">
+          <button class="add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product reveal">
+        <span class="product-badge">New</span>
+        <img src="images/black-cordless-headphones-gray-textile-min.jpg" class="product-img">
+        <h3>Wireless Headphones</h3>
+        <p class="desc">High-quality sound with noise cancellation.</p>
+        <p class="price">₦25,000</p>
+        <div class="cart-actions">
+          <button class="add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product reveal">
+        <span class="product-badge">Popular</span>
+        <img src="images/11873.jpg" class="product-img">
+        <h3>Smart Watch</h3>
+        <p class="desc">Track your fitness and stay connected.</p>
+        <p class="price">₦18,500</p>
+        <div class="cart-actions">
+          <button class="add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product reveal">
+        <img src="images/man-packing-away-his-laptop-into-bag-min.jpg" class="product-img">
+        <h3>Laptop Backpack</h3>
+        <p class="desc">Durable backpack for work and travel.</p>
+        <p class="price">₦12,000</p>
+        <div class="cart-actions">
+          <button class="add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product reveal">
+        <img src="images/wireless-speaker-amplifier-black-min.jpg" class="product-img">
+        <h3>Bluetooth Speaker</h3>
+        <p class="desc">Portable speaker with deep bass.</p>
+        <p class="price">₦15,000</p>
+        <div class="cart-actions">
+          <button class="add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product reveal">
+        <span class="product-badge">New</span>
+        <img src="images/black-cordless-headphones-gray-textile-min.jpg" class="product-img">
+        <h3>Wireless Headphones</h3>
+        <p class="desc">High-quality sound with noise cancellation.</p>
+        <p class="price">₦25,000</p>
+        <div class="cart-actions">
+          <button class="add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product reveal">
+        <span class="product-badge">Popular</span>
+        <img src="images/11873.jpg" class="product-img">
+        <h3>Smart Watch</h3>
+        <p class="desc">Track your fitness and stay connected.</p>
+        <p class="price">₦18,500</p>
+        <div class="cart-actions">
+          <button class="add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product reveal">
+        <img src="images/man-packing-away-his-laptop-into-bag-min.jpg" class="product-img">
+        <h3>Laptop Backpack</h3>
+        <p class="desc">Durable backpack for work and travel.</p>
+        <p class="price">₦12,000</p>
+        <div class="cart-actions">
+          <button class="add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product reveal">
+        <img src="images/wireless-speaker-amplifier-black-min.jpg" class="product-img">
+        <h3>Bluetooth Speaker</h3>
+        <p class="desc">Portable speaker with deep bass.</p>
+        <p class="price">₦15,000</p>
+        <div class="cart-actions">
+          <button class="add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product reveal">
+        <span class="product-badge">New</span>
+        <img src="images/black-cordless-headphones-gray-textile-min.jpg" class="product-img">
+        <h3>Wireless Headphones</h3>
+        <p class="desc">High-quality sound with noise cancellation.</p>
+        <p class="price">₦25,000</p>
+        <div class="cart-actions">
+          <button class="add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product reveal">
+        <span class="product-badge">Popular</span>
+        <img src="images/11873.jpg" class="product-img">
+        <h3>Smart Watch</h3>
+        <p class="desc">Track your fitness and stay connected.</p>
+        <p class="price">₦18,500</p>
+        <div class="cart-actions">
+          <button class="add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product reveal">
+        <img src="images/man-packing-away-his-laptop-into-bag-min.jpg" class="product-img">
+        <h3>Laptop Backpack</h3>
+        <p class="desc">Durable backpack for work and travel.</p>
+        <p class="price">₦12,000</p>
+        <div class="cart-actions">
+          <button class="add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product reveal">
+        <img src="images/wireless-speaker-amplifier-black-min.jpg" class="product-img">
+        <h3>Bluetooth Speaker</h3>
+        <p class="desc">Portable speaker with deep bass.</p>
+        <p class="price">₦15,000</p>
+        <div class="cart-actions">
+          <button class="add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <!-- ALL OTHER CARDS -->
+      <!-- ✅ Just ensure every .product has class="product reveal" -->
+      <!-- Your repeated cards are already structurally correct -->
+
+    </div>
+  </section>
+
+  <!-- ================= FOOTER ================= -->
+  <footer>
+    <p>© 2025 BuySmart by emmy. All rights reserved</p>
+  </footer>
+  <!-- FLOATING CART BUTTON -->
+<a href="cart.html" class="floating-cart">
+  🛒
+  <span class="floating-cart-badge" id="floatingCartCount">0</span>
+</a>
+
+
+  <!-- ================= JAVASCRIPT ================= -->
+  <script>
+    /* ---------- HAMBURGER ---------- */
+/* ---------- HAMBURGER ---------- */
+const hamburger = document.getElementById("hamburger");
+const nav = document.querySelector(".main-header nav");
+
+hamburger.addEventListener("click", () => {
+  nav.classList.toggle("open");
+});
+
+
+/* ---------- CART LOGIC ---------- */
+document.addEventListener("DOMContentLoaded", () => {
+
+  const cartBadge = document.getElementById("cartCount");
+  const floatingBadge = document.getElementById("floatingCartCount");
+
+  let cart = JSON.parse(localStorage.getItem("cart")) || {};
+
+  function saveCart() {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }
+
+  function updateBadges() {
+    let total = 0;
+    for (let key in cart) {
+      total += cart[key].qty;
+    }
+
+    if (cartBadge) cartBadge.textContent = total;
+
+    if (floatingBadge) {
+      floatingBadge.textContent = total;
+      floatingBadge.style.display = total > 0 ? "flex" : "none";
+    }
+  }
+
+  updateBadges();
+
+  document.querySelectorAll(".product").forEach((product, index) => {
+
+    const addBtn = product.querySelector(".add-to-cart");
+    const actions = product.querySelector(".cart-actions");
+    if (!addBtn || !actions) return;
+
+    const name = product.querySelector("h3").innerText;
+    const price = product.querySelector(".price").innerText;
+    const image = product.querySelector("img").src;
+
+    // UNIQUE ID (prevents false "Added")
+    const id = `${name}-${image}-${index}`;
+
+    const minusBtn = document.createElement("button");
+    minusBtn.textContent = "−";
+    minusBtn.className = "remove-from-cart";
+    minusBtn.style.display = "none";
+    actions.appendChild(minusBtn);
+
+    // Sync UI on page load
+    if (cart[id]) {
+      addBtn.textContent = "Added";
+      minusBtn.style.display = "inline-block";
+    }
+
+    addBtn.addEventListener("click", () => {
+      if (!cart[id]) {
+        cart[id] = { id, name, price, image, qty: 0 };
+      }
+
+      cart[id].qty++;
+      saveCart();
+      updateBadges();
+
+      addBtn.textContent = "Added";
+      minusBtn.style.display = "inline-block";
+    });
+
+    minusBtn.addEventListener("click", () => {
+      if (!cart[id]) return;
+
+      cart[id].qty--;
+
+      if (cart[id].qty <= 0) {
+        delete cart[id];
+        addBtn.textContent = "Add to Cart";
+        minusBtn.style.display = "none";
+      }
+
+      saveCart();
+      updateBadges();
+    });
+
+  });
+});
+
+
+/* ---------- REVEAL ON SCROLL ---------- */
+(function () {
+  const reveals = document.querySelectorAll(".reveal");
+
+  function revealOnScroll() {
+    const trigger = window.innerHeight * 0.85;
+    reveals.forEach(el => {
+      if (el.getBoundingClientRect().top < trigger) {
+        el.classList.add("active");
+      }
+    });
+  }
+
+  window.addEventListener("scroll", revealOnScroll);
+  window.addEventListener("resize", revealOnScroll);
+  revealOnScroll();
+})();
+
+  </script>
+
+</body>
+</html>

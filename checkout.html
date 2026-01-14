@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>BuySmart | Secure Checkout</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #f5f7fa;
+      color: #222;
+    }
+
+    /* ===== HEADER ===== */
+    .checkout-header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      height: 80px;
+      background: #0b1c2d;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 20px;
+      z-index: 1000;
+    }
+
+    .checkout-header img {
+      height: 56px;
+      /* INCREASED LOGO SIZE */
+    }
+
+    .secure-text {
+      color: #1e73ff;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    /* ===== LAYOUT ===== */
+    .checkout-page {
+      margin-top: 100px;
+      max-width: 1100px;
+      margin-inline: auto;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 320px);
+      gap: 24px;
+      padding: 16px;
+      width: 100%;
+    }
+
+
+    /* ===== LEFT ===== */
+    .checkout-left {
+      background: #ffffff;
+      padding: 22px;
+      border-radius: 10px;
+      min-width: 0;
+      width: 100%;
+    }
+
+    .checkout-left h2 {
+      font-size: 16px;
+      margin-bottom: 14px;
+    }
+
+    .checkout-form input {
+      width: 100%;
+      padding: 14px;
+      margin-bottom: 12px;
+      border-radius: 6px;
+      border: 1px solid #ddd;
+      font-size: 14px;
+    }
+
+    /* ===== PAYMENT ===== */
+    .payment-option {
+      display: flex;
+      align-items: center;
+      /* FIX vertical alignment */
+      gap: 10px;
+      /* Close radio to text */
+      padding: 14px;
+      border: 1px solid #e0e6ed;
+      border-radius: 10px;
+      cursor: pointer;
+      background: #f8fbff;
+    }
+
+    .payment-option input[type="radio"] {
+      transform: scale(1.4);
+      /* BIGGER radio */
+      accent-color: #1e73ff;
+      /* Match site blue */
+      cursor: pointer;
+    }
+
+    .payment-text strong {
+      font-size: 14px;
+      display: block;
+    }
+
+    .payment-text span {
+      font-size: 12px;
+      color: #666;
+    }
+
+
+    /* ===== SUMMARY ===== */
+    .checkout-summary {
+      background: #ffffff;
+      padding: 22px;
+      border-radius: 10px;
+      height: fit-content;
+      position: relative;
+      top: 100px;
+      min-width: 0;
+      width: 100%;
+    }
+
+    .checkout-summary h2 {
+      font-size: 16px;
+      margin-bottom: 16px;
+    }
+
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 14px;
+      margin-bottom: 12px;
+    }
+
+    .summary-row.total {
+      font-size: 16px;
+      font-weight: 600;
+      border-top: 1px solid #eee;
+      padding-top: 12px;
+    }
+
+    .place-order-btn {
+      width: 100%;
+      padding: 16px;
+      background: #1e73ff;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 14px;
+    }
+
+    .place-order-btn:hover {
+      opacity: 0.9;
+    }
+
+    /* ===== FOOTER ===== */
+    .checkout-footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 13px;
+      color: #666;
+      margin-top: 40px;
+    }
+
+    /* ================= MOBILE FIX (CLEAN & FINAL) ================= */
+
+    html,
+    body {
+      width: 100%;
+      overflow-x: hidden;
+    }
+
+    /* Tablet & below */
+    @media (max-width: 900px) {
+
+      .checkout-header {
+        height: 70px;
+      }
+
+      .checkout-page {
+        grid-template-columns: 1fr;
+        margin-top: 90px;
+        padding: 14px;
+        max-width: 100%;
+      }
+
+      .checkout-left,
+      .checkout-summary {
+        width: 100%;
+        max-width: 100%;
+        padding: 18px;
+      }
+
+      .checkout-summary {
+        position: relative;
+        top: auto;
+      }
+    }
+
+    /* Phones */
+    @media (max-width: 600px) {
+
+      .checkout-header {
+        height: 64px;
+        padding: 0 12px;
+      }
+
+      .checkout-header img {
+        height: 40px;
+      }
+
+      .secure-text {
+        font-size: 12px;
+      }
+
+      .checkout-page {
+        margin-top: 80px;
+        padding: 12px;
+      }
+
+      .checkout-left h2,
+      .checkout-summary h2 {
+        font-size: 14px;
+      }
+
+      .checkout-form input {
+        padding: 12px;
+        font-size: 13px;
+      }
+
+      .place-order-btn {
+        padding: 14px;
+        font-size: 14px;
+      }
+
+      .checkout-footer {
+        font-size: 12px;
+        padding: 16px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header class="checkout-header">
+    <a href="index.html">
+      <img src="images/logo (2).png" alt="BuySmart Logo">
+    </a>
+    <span class="secure-text">Secure Checkout</span>
+  </header>
+
+  <!-- MAIN -->
+  <main class="checkout-page">
+
+    <!-- LEFT -->
+    <section class="checkout-left">
+      <h2>Shipping Details</h2>
+
+      <form class="checkout-form">
+        <input type="text" placeholder="Full Name" required>
+        <input type="tel" placeholder="Phone Number" required>
+        <input type="text" placeholder="Delivery Address" required>
+
+        <h2 style="margin-top:20px;">Payment Method</h2>
+
+        <label class="payment-option">
+          <input type="radio" name="payment" checked>
+          <div class="payment-text">
+            <strong>Pay on Delivery</strong>
+            <span>Cash or bank transfer on delivery</span>
+          </div>
+        </label>
+
+      </form>
+    </section>
+
+    <!-- SUMMARY -->
+    <aside class="checkout-summary">
+      <h2>Order Summary</h2>
+
+      <div class="summary-row">
+        <span>Subtotal</span>
+        <span id="checkoutSubtotal">₦0</span>
+      </div>
+
+      <div class="summary-row total">
+        <span>Total</span>
+        <span id="checkoutTotal">₦0</span>
+      </div>
+
+      <button class="place-order-btn" id="placeOrderBtn">
+        Place Order
+      </button>
+    </aside>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="checkout-footer">
+    <p>© 2025 BuySmart by emmy. All rights reserved</p>
+  </footer>
+
+  <!-- JS -->
+<script>
+  const subtotalEl = document.getElementById("checkoutSubtotal");
+  const totalEl = document.getElementById("checkoutTotal");
+  const placeOrderBtn = document.getElementById("placeOrderBtn");
+
+  // 🔧 FIX: cart is an OBJECT (same as cart.html)
+  let cart = JSON.parse(localStorage.getItem("cart")) || {};
+
+  function formatPrice(amount) {
+    return "₦" + amount.toLocaleString();
+  }
+
+  function parsePrice(priceStr) {
+    return Number(priceStr.replace(/[₦,]/g, ""));
+  }
+
+  function calculateTotals() {
+    let subtotal = 0;
+
+    Object.values(cart).forEach(item => {
+      subtotal += parsePrice(item.price) * item.qty;
+    });
+
+    subtotalEl.textContent = formatPrice(subtotal);
+    totalEl.textContent = formatPrice(subtotal);
+  }
+
+  placeOrderBtn.addEventListener("click", () => {
+    if (Object.keys(cart).length === 0) {
+      alert("Your cart is empty.");
+      return;
+    }
+
+    alert("Order placed successfully!");
+    localStorage.removeItem("cart");
+    window.location.href = "index.html";
+  });
+
+  calculateTotals();
+</script>
+</body>
+</html>

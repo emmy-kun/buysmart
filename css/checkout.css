@@ -1,0 +1,26 @@
+.checkout-form {
+  max-width: 500px;
+  margin: 50px auto;
+  background: #1a1a1a;
+  padding: 30px;
+  border: 1px solid #555;
+}
+
+.checkout-form label {
+  display: block;
+  margin: 15px 0 5px;
+}
+
+.checkout-form input,
+.checkout-form textarea {
+  width: 100%;
+  padding: 10px;
+  background: #222;
+  border: 1px solid #555;
+  color: silver;
+}
+
+.checkout-form button {
+  width: 100%;
+  margin-top: 20px;
+}

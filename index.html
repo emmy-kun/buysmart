@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BuySmart | Home</title>
+
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/home.css">
+</head>
+
+<body>
+
+  <!-- ================= HEADER ================= -->
+  <header class="main-header reveal">
+    <a href="cart.html" class="cart-link">
+      🛒
+      <span class="cart-badge" id="cartCount">0</span>
+    </a>
+
+    <a href="index.html" class="logo-area">
+      <img src="images/logo (2).png" alt="BuySmart Logo" class="logo-img">
+    </a>
+
+    <button class="hamburger" id="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav id="navMenu">
+      <a href="index.html">Home</a>
+      <a href="products.html">products</a>
+      <a href="checkout.html">Checkout</a>
+      <a href="auth.html">signup</a>
+      <a href="profile.html">profile</a>
+    </nav>
+  </header>
+
+  <!-- ================= HERO SECTION ================= -->
+  <section class="hero reveal">
+    <div class="hero-slider" id="heroSlider">
+
+      <div class="hero-slide slide1">
+        <h1>Smart Shopping</h1>
+        <p>Shop smarter with BuySmart</p>
+        <a href="#products" class="shop-button">Shop Now</a>
+      </div>
+
+      <div class="hero-slide slide2">
+        <h1>Latest tech products</h1>
+        <p>Secure and seamless payments</p>
+        <a href="#products" class="shop-button">Shop Now</a>
+      </div>
+
+      <div class="hero-slide slide3">
+        <h1>shop comfortably</h1>
+        <p>Shop from the comfort of your home</p>
+        <a href="#products" class="shop-button">Shop Now</a>
+      </div>
+
+    </div>
+
+    <div class="hero-indicators">
+      <span class="dot active"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+    </div>
+  </section>
+
+  <!-- ================= FEATURES ================= -->
+  <section class="features reveal">
+    <h2 class="section-title">Why Choose BuySmart</h2>
+    <p class="section-subtitle">
+      BuySmart is designed to provide a smooth, secure, and efficient online shopping experience.
+    </p>
+
+    <div class="feature-grid">
+      <div class="feature-card reveal">
+        <div class="feature-icon">🔍</div>
+        <h3>Smart Product Search</h3>
+        <p>Easily find products using category and keyword filtering.</p>
+      </div>
+
+      <div class="feature-card reveal">
+        <div class="feature-icon">🛒</div>
+        <h3>Simple Cart Management</h3>
+        <p>Add, remove, and update products instantly.</p>
+      </div>
+
+      <div class="feature-card reveal">
+        <div class="feature-icon">🔐</div>
+        <h3>Secure Checkout</h3>
+        <p>Structured checkout with validation and order summary.</p>
+      </div>
+
+      <div class="feature-card reveal">
+        <div class="feature-icon">🧾</div>
+        <h3>Instant Invoice</h3>
+        <p>Automatic invoice generation after checkout.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SEARCH BAR ================= -->
+  <section class="controls reveal">
+    <div class="search-wrapper">
+      <h2 class="search-title">Find What You’re Looking For</h2>
+      <p class="search-subtitle">
+        Search across all categories and discover great deals.
+      </p>
+
+      <div class="search-box">
+        <input type="text" id="searchInput" placeholder="Search for products, brands and categories...">
+        <button class="search-btn">🔍</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= PRODUCTS ================= -->
+  <section class="products reveal" id="products">
+    <div class="products-header">
+      <div>
+        <h2 class="section-title">Featured Products</h2>
+        <p class="section-subtitle">
+          Explore some of our top-selling and highly rated products.
+        </p>
+      </div>
+
+      <a href="products.html" class="btn see-more-btn">See More</a>
+    </div>
+
+    <div class="product-grid">
+      <div class="product reveal">
+        <span class="product-badge">New</span>
+        <img src="images/black-cordless-headphones-gray-textile-min.jpg" class="product-img">
+        <h3>Wireless Headphones</h3>
+        <p class="desc">High-quality sound with noise cancellation.</p>
+        <p class="price">₦25,000</p>
+        <button class="add-to-cart">Add to Cart</button>
+      </div>
+
+      <div class="product reveal">
+        <span class="product-badge">Popular</span>
+        <img src="images/11873.jpg" class="product-img">
+        <h3>Smart Watch</h3>
+        <p class="desc">Track your fitness and stay connected.</p>
+        <p class="price">₦18,500</p>
+        <button class="add-to-cart">Add to Cart</button>
+      </div>
+
+      <div class="product reveal">
+        <img src="images/man-packing-away-his-laptop-into-bag-min.jpg" class="product-img">
+        <h3>Laptop Backpack</h3>
+        <p class="desc">Durable backpack for work and travel.</p>
+        <p class="price">₦12,000</p>
+        <button class="add-to-cart">Add to Cart</button>
+      </div>
+
+      <div class="product reveal">
+        <img src="images/wireless-speaker-amplifier-black-min.jpg" class="product-img">
+        <h3>Bluetooth Speaker</h3>
+        <p class="desc">Portable speaker with deep bass.</p>
+        <p class="price">₦15,000</p>
+        <button class="add-to-cart">Add to Cart</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= TESTIMONIALS ================= -->
+  <section class="testimonials reveal">
+    <h2>What Our Users Say</h2>
+
+    <div class="testimonial-grid">
+      <div class="testimonial-card reveal">
+        <p>“BuySmart makes online shopping very easy. The interface is clean and smooth.”</p>
+        <h4>— Daniel O.</h4>
+        <span>Student</span>
+      </div>
+
+      <div class="testimonial-card reveal">
+        <p>“I like how the cart updates instantly. It feels professional.”</p>
+        <h4>— Aisha M.</h4>
+        <span>Business Owner</span>
+      </div>
+
+      <div class="testimonial-card reveal">
+        <p>“The invoice generation feature is impressive.”</p>
+        <h4>— Samuel K.</h4>
+        <span>IT Intern</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FOOTER ================= -->
+  <footer>
+     <p>© 2025 BuySmart by emmy. All rights reserved</p>
+  </footer>
+
+  <!-- FLOATING CART BUTTON -->
+  <a href="cart.html" class="floating-cart">
+    🛒
+    <span class="floating-cart-badge" id="floatingCartCount">0</span>
+  </a>
+
+  <!-- ================= SIGNUP MODAL ================= -->
+  <div class="signup-modal" id="signupModal">
+    <div class="signup-box">
+      <button class="close-modal" id="closeSignup">&times;</button>
+
+      <h2>Join BuySmart</h2>
+      <p>Create an account to enjoy faster checkout and exclusive deals.</p>
+
+      <a href="auth.html" class="signup-btn">Create an Account</a>
+
+      <p class="login-text">
+        Already have an account?
+        <a href="auth.html">Log in</a>
+      </p>
+    </div>
+  </div>
+
+
+
+
+  <!-- ================= INLINE HERO SLIDER JS ================= -->
+  <script>
+    (function () {
+      const slider = document.getElementById("heroSlider");
+      const slides = document.querySelectorAll(".hero-slide");
+      const dots = document.querySelectorAll(".hero-indicators .dot");
+
+      if (!slider || slides.length === 0) return;
+
+      let currentIndex = 0;
+      const totalSlides = slides.length;
+
+      function updateSlider(index) {
+        slider.style.transform = `translateX(-${index * 100}vw)`;
+
+        dots.forEach(dot => dot.classList.remove("active"));
+        if (dots[index]) dots[index].classList.add("active");
+      }
+
+      function nextSlide() {
+        currentIndex = (currentIndex + 1) % totalSlides;
+        updateSlider(currentIndex);
+      }
+
+      let autoSlide = setInterval(nextSlide, 5000);
+
+      dots.forEach((dot, index) => {
+        dot.addEventListener("click", () => {
+          currentIndex = index;
+          updateSlider(currentIndex);
+          clearInterval(autoSlide);
+          autoSlide = setInterval(nextSlide, 5000);
+        });
+      });
+    })();
+
+    const hamburger = document.getElementById("hamburger");
+    const nav = document.querySelector(".main-header nav");
+
+    hamburger.addEventListener("click", () => {
+      nav.classList.toggle("open");
+    });
+
+
+    document.addEventListener("DOMContentLoaded", () => {
+
+      const cartBadge = document.getElementById("cartCount");
+      let cart = JSON.parse(localStorage.getItem("cart")) || {};
+
+      // Fix old cart data
+      for (let key in cart) {
+        if (!cart[key].qty || isNaN(cart[key].qty)) {
+          cart[key].qty = 0;
+        }
+      }
+
+      function updateCartBadge() {
+        let total = 0;
+        for (let key in cart) {
+          total += Number(cart[key].qty) || 0;
+        }
+        cartBadge.textContent = total;
+      }
+
+      updateCartBadge();
+
+      document.querySelectorAll(".product").forEach(productCard => {
+
+        const addBtn = productCard.querySelector(".add-to-cart");
+
+        const minusBtn = document.createElement("button");
+        minusBtn.textContent = "−";
+        minusBtn.className = "remove-from-cart";
+        minusBtn.style.display = "none";
+        minusBtn.style.marginLeft = "8px";
+
+        addBtn.after(minusBtn);
+
+        const name = productCard.querySelector("h3").innerText;
+        const price = productCard.querySelector(".price").innerText;
+        const image = productCard.querySelector("img").src;
+
+        /* ADD */
+        addBtn.addEventListener("click", () => {
+
+          if (!cart[name]) {
+            cart[name] = { name, price, image, qty: 0 };
+          }
+
+          cart[name].qty += 1;
+
+          localStorage.setItem("cart", JSON.stringify(cart));
+          updateCartBadge();
+
+          addBtn.textContent = "Added";
+          minusBtn.style.display = "inline-block";
+        });
+
+        /* REMOVE */
+        minusBtn.addEventListener("click", () => {
+
+          if (!cart[name]) return;
+
+          cart[name].qty -= 1;
+
+          if (cart[name].qty <= 0) {
+            delete cart[name];
+            minusBtn.style.display = "none";
+            addBtn.textContent = "Add to Cart";
+          } else {
+            addBtn.textContent = "Added";
+          }
+
+          localStorage.setItem("cart", JSON.stringify(cart));
+          updateCartBadge();
+        });
+
+      });
+
+
+      (function () {
+        const revealElements = document.querySelectorAll(".reveal");
+
+        if (!revealElements.length) return;
+
+        function revealOnScroll() {
+          revealElements.forEach(el => {
+            const rect = el.getBoundingClientRect();
+
+            // Works reliably on mobile & desktop
+            if (rect.top <= window.innerHeight * 0.85) {
+              el.classList.add("active");
+            }
+          });
+        }
+
+        window.addEventListener("scroll", revealOnScroll);
+        window.addEventListener("resize", revealOnScroll);
+
+        revealOnScroll(); // run on load
+      })();
+
+      function updateCartBadge() {
+        let total = 0;
+        for (let key in cart) {
+          total += cart[key].qty || 0;
+        }
+
+        cartBadge.textContent = total;
+
+        const floatingBadge = document.getElementById("floatingCartCount");
+        if (floatingBadge) {
+          floatingBadge.textContent = total;
+        }
+      }
+
+      const signupModal = document.getElementById("signupModal");
+      const closeSignup = document.getElementById("closeSignup");
+
+      if (signupModal && closeSignup) {
+        // Always show popup on refresh
+        setTimeout(() => {
+          signupModal.classList.add("show");
+        }, 500);
+
+        closeSignup.addEventListener("click", () => {
+          signupModal.classList.remove("show");
+        });
+      }
+
+
+    });
+  </script>
+</body>
+</html>

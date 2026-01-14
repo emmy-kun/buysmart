@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>BuySmart | Profile</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    *{
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #000;
+      color: #fff;
+    }
+
+    /* ================= HEADER ================= */
+
+    .main-header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: linear-gradient(90deg, #000, #111);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 40px;
+      border-bottom: 1px solid #333;
+      height: 80px;
+    }
+
+    .logo-area {
+      text-decoration: none;
+    }
+
+    .logo-img {
+      height: 115px;
+      width: auto;
+    }
+
+    nav {
+      display: flex;
+      gap: 28px;
+    }
+
+    nav a {
+      color: #c0c0c0;
+      font-size: 15px;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    nav a:hover {
+      color: #4DA3FF;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 6px;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    .hamburger span {
+      width: 26px;
+      height: 3px;
+      background: #fff;
+      border-radius: 3px;
+    }
+
+    @media (max-width: 768px) {
+      .hamburger {
+        display: flex;
+      }
+
+      nav {
+        display: none;
+      }
+
+      nav.open {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        padding: 20px;
+        background: #0b0b0b;
+        gap: 16px;
+      }
+    }
+
+    /* ================= PROFILE ================= */
+
+    .profile-container {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 0 16px;
+    }
+
+    .profile-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px;
+      border-radius: 12px;
+    }
+
+    .profile-left {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .profile-avatar {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: #132f4c;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .logout-btn {
+      padding: 10px 16px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      font-weight: 500;
+      background: #4DA3FF;
+      color: #fff;
+    }
+
+    .orders {
+      margin-top: 40px;
+    }
+
+    .order-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 16px;
+      border-radius: 12px;
+      background: #111;
+      margin-bottom: 14px;
+    }
+
+    .order-item img {
+      width: 70px;
+      border-radius: 8px;
+    }
+
+    .order-info {
+      flex: 1;
+    }
+
+    .empty {
+      padding: 24px;
+      border-radius: 12px;
+      background: #111;
+      text-align: center;
+      margin-top: 16px;
+    }
+  </style>
+</head>
+
+<body>
+
+<header class="main-header">
+  <a href="index.html" class="logo-area">
+    <img src="images/logo (2).png" class="logo-img">
+  </a>
+
+  <button class="hamburger" id="hamburger">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
+  <nav id="navMenu">
+    <a href="index.html">Home</a>
+    <a href="products.html">Products</a>
+    <a href="checkout.html">Checkout</a>
+  </nav>
+</header>
+
+<main class="profile-container">
+
+  <div class="profile-header">
+    <div class="profile-left">
+      <div class="profile-avatar" id="avatar">U</div>
+      <div>
+        <h2 id="username">User</h2>
+        <p>My Account</p>
+      </div>
+    </div>
+
+    <button class="logout-btn" id="logoutBtn">Logout</button>
+  </div>
+
+  <section class="orders">
+    <h2>My Orders</h2>
+    <div id="ordersList"></div>
+  </section>
+
+</main>
+
+<script>
+  /* ================= USER (FIXED) ================= */
+
+  const user = JSON.parse(localStorage.getItem("user"));
+
+  if (!user) {
+    window.location.href = "auth.html";
+  } else {
+    document.getElementById("username").textContent = user.name;
+    document.getElementById("avatar").textContent = user.name.charAt(0).toUpperCase();
+  }
+
+  /* ================= ORDERS (FROM CART) ================= */
+
+  const ordersList = document.getElementById("ordersList");
+  const cart = JSON.parse(localStorage.getItem("cart")) || {};
+
+  const items = Object.values(cart);
+
+  if (items.length === 0) {
+    ordersList.innerHTML = `<div class="empty">No products added yet.</div>`;
+  } else {
+    items.forEach(item => {
+      const div = document.createElement("div");
+      div.className = "order-item";
+
+      const priceNumber = parseInt(item.price.replace(/\D/g, ""));
+
+      div.innerHTML = `
+        <img src="${item.image}">
+        <div class="order-info">
+          <strong>${item.name}</strong><br>
+          Quantity: ${item.qty}
+        </div>
+        <div>₦${(priceNumber * item.qty).toLocaleString()}</div>
+      `;
+
+      ordersList.appendChild(div);
+    });
+  }
+
+  /* ================= LOGOUT ================= */
+
+  document.getElementById("logoutBtn").addEventListener("click", () => {
+    localStorage.removeItem("user");
+    localStorage.removeItem("isLoggedIn");
+    window.location.href = "index.html";
+  });
+
+  /* ================= HAMBURGER ================= */
+
+  document.getElementById("hamburger").addEventListener("click", () => {
+    document.getElementById("navMenu").classList.toggle("open");
+  });
+</script>
+
+</body>
+</html>

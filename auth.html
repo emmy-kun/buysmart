@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>BuySmart | Login / Sign Up</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    *,*::before,*::after{box-sizing:border-box}
+
+    body{
+      margin:0;
+      font-family:Arial,sans-serif;
+      background:#0b1c2d;
+      color:#fff;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      height:100vh;
+    }
+
+    .auth-box{
+      background:#132f4c;
+      padding:32px;
+      border-radius:14px;
+      width:100%;
+      max-width:380px;
+      box-shadow:0 10px 30px rgba(0,0,0,.4);
+    }
+
+    .auth-logo{text-align:center;margin-bottom:20px}
+    .auth-logo img{width:120px}
+
+    h2{text-align:center;margin-bottom:20px}
+
+    input,button{
+      width:100%;
+      height:48px;
+      padding:14px;
+      border-radius:8px;
+      border:none;
+      font-size:14px;
+    }
+
+    input{margin-bottom:16px}
+
+    button{
+      background:#1e73ff;
+      color:#fff;
+      font-size:15px;
+      font-weight:600;
+      cursor:pointer;
+      margin-top:8px;
+    }
+
+    .toggle{
+      text-align:center;
+      margin-top:16px;
+      font-size:14px;
+      cursor:pointer;
+      color:#9ecbff;
+    }
+
+    .hidden{display:none}
+  </style>
+</head>
+
+<body>
+
+<div class="auth-box">
+  <div class="auth-logo">
+    <img src="images/logo (2).png" alt="BuySmart">
+  </div>
+
+  <!-- LOGIN -->
+  <div id="loginForm">
+    <h2>Log In</h2>
+    <input type="email" id="loginEmail" placeholder="Email" required>
+    <input type="password" id="loginPassword" placeholder="Password" required>
+    <button onclick="login()">Log In</button>
+    <div class="toggle" onclick="toggleForms()">Create an account</div>
+  </div>
+
+  <!-- SIGN UP -->
+  <div id="signupForm" class="hidden">
+    <h2>Create Account</h2>
+    <input type="text" id="signupName" placeholder="Full Name" required>
+    <input type="email" id="signupEmail" placeholder="Email" required>
+    <input type="password" id="signupPassword" placeholder="Password" required>
+    <button onclick="signup()">Sign Up</button>
+    <div class="toggle" onclick="toggleForms()">Already have an account?</div>
+  </div>
+</div>
+
+<script>
+  const loginForm = document.getElementById("loginForm");
+  const signupForm = document.getElementById("signupForm");
+
+  function toggleForms(){
+    loginForm.classList.toggle("hidden");
+    signupForm.classList.toggle("hidden");
+  }
+
+  function signup(){
+    const user = {
+      name: signupName.value.trim(),
+      email: signupEmail.value.trim()
+    };
+
+    if(!user.name || !user.email){
+      alert("Please fill all fields");
+      return;
+    }
+
+    localStorage.setItem("user", JSON.stringify(user));
+    localStorage.setItem("isLoggedIn","true");
+
+    window.location.href="profile.html";
+  }
+
+  function login(){
+    const savedUser = JSON.parse(localStorage.getItem("user"));
+
+    if(!savedUser){
+      alert("No account found. Please sign up.");
+      return;
+    }
+
+    if(loginEmail.value.trim() !== savedUser.email){
+      alert("Invalid email");
+      return;
+    }
+
+    // restore user session
+    localStorage.setItem("user", JSON.stringify(savedUser));
+    localStorage.setItem("isLoggedIn","true");
+
+    window.location.href="profile.html";
+  }
+</script>
+
+</body>
+</html>

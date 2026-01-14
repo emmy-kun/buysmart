@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>BuySmart | Cart</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/cart.css">
+</head>
+
+<body>
+
+  <!-- ================= HEADER ================= -->
+  <header class="main-header">
+    <a href="cart.html" class="cart-link">
+      🛒
+      <span class="cart-badge" id="cartCount">0</span>
+    </a>
+
+    <a href="index.html" class="logo-area">
+      <img src="images/logo (2).png" alt="BuySmart Logo" class="logo-img">
+    </a>
+
+    <button class="hamburger" id="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav id="navMenu">
+      <a href="index.html">Home</a>
+      <a href="products.html">Products</a>
+      <a href="checkout.html">Checkout</a>
+    </nav>
+  </header>
+  <!-- ================= CART ================= -->
+  <main class="cart-page">
+
+    <h1 class="cart-title">Your Cart</h1>
+
+    <div class="cart-layout">
+
+      <!-- CART ITEMS -->
+      <section class="cart-items" id="cartItems">
+        <!-- JS will inject items here -->
+      </section>
+
+      <!-- CART SUMMARY -->
+      <aside class="cart-summary">
+        <h2>Order Summary</h2>
+
+        <div class="summary-row">
+          <span>Subtotal</span>
+          <span id="subtotal">₦0</span>
+        </div>
+
+        <div class="summary-row total">
+          <span>Total</span>
+          <span id="total">₦0</span>
+        </div>
+
+        <a href="checkout.html" class="checkout-btn">
+          Proceed to Checkout
+        </a>
+      </aside>
+
+    </div>
+
+    <!-- EMPTY CART -->
+    <div class="empty-cart" id="emptyCart" style="display:none;">
+      <p>Your cart is empty.</p>
+      <a href="products.html" class="checkout-btn">Start Shopping</a>
+    </div>
+
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer>
+    <p>&copy; 2025 BuySmart Mini E-Market System</p>
+  </footer>
+
+  <!-- ================= JAVASCRIPT ================= -->
+<script>
+
+/* ---------- HAMBURGER ---------- */
+const hamburger = document.getElementById("hamburger");
+const navMenu = document.getElementById("navMenu");
+
+hamburger.addEventListener("click", () => {
+  navMenu.classList.toggle("open");
+});
+
+
+/* ---------- CART LOGIC ---------- */
+(function () {
+
+  const cartItemsContainer = document.getElementById("cartItems");
+  const subtotalEl = document.getElementById("subtotal");
+  const totalEl = document.getElementById("total");
+  const emptyCartEl = document.getElementById("emptyCart");
+  const cartLayout = document.querySelector(".cart-layout");
+  const cartBadge = document.getElementById("cartCount");
+
+  // 🔧 FIX: cart is now an OBJECT, not array
+  let cart = JSON.parse(localStorage.getItem("cart")) || {};
+
+  function formatPrice(amount) {
+    return "₦" + amount.toLocaleString();
+  }
+
+  function parsePrice(priceStr) {
+    return Number(priceStr.replace(/[₦,]/g, ""));
+  }
+
+  function saveCart() {
+    localStorage.setItem("cart", JSON.stringify(cart));
+    updateBadge();
+  }
+
+  function updateBadge() {
+    let totalQty = 0;
+    Object.values(cart).forEach(item => {
+      totalQty += item.qty;
+    });
+    if (cartBadge) cartBadge.textContent = totalQty;
+  }
+
+  function calculateTotals() {
+    let subtotal = 0;
+    Object.values(cart).forEach(item => {
+      subtotal += parsePrice(item.price) * item.qty;
+    });
+
+    subtotalEl.textContent = formatPrice(subtotal);
+    totalEl.textContent = formatPrice(subtotal);
+  }
+
+  function renderCart() {
+    cartItemsContainer.innerHTML = "";
+
+    const items = Object.values(cart);
+
+    if (items.length === 0) {
+      emptyCartEl.style.display = "block";
+      cartLayout.style.display = "none";
+      updateBadge();
+      return;
+    }
+
+    emptyCartEl.style.display = "none";
+    cartLayout.style.display = "grid";
+
+    items.forEach(item => {
+
+      const cartItem = document.createElement("div");
+      cartItem.className = "cart-item";
+
+      cartItem.innerHTML = `
+        <img src="${item.image}" alt="${item.name}">
+
+        <div class="cart-item-info">
+          <h3>${item.name}</h3>
+          <div class="price">${item.price}</div>
+        </div>
+
+        <div class="cart-qty">
+          <button class="qty-minus" data-id="${item.id}">−</button>
+          <span>${item.qty}</span>
+          <button class="qty-plus" data-id="${item.id}">+</button>
+        </div>
+      `;
+
+      cartItemsContainer.appendChild(cartItem);
+    });
+
+    calculateTotals();
+    updateBadge();
+  }
+
+  cartItemsContainer.addEventListener("click", function (e) {
+
+    const id = e.target.dataset.id;
+    if (!id || !cart[id]) return;
+
+    if (e.target.classList.contains("qty-plus")) {
+      cart[id].qty++;
+    }
+
+    if (e.target.classList.contains("qty-minus")) {
+      cart[id].qty--;
+      if (cart[id].qty <= 0) {
+        delete cart[id];
+      }
+    }
+
+    saveCart();
+    renderCart();
+  });
+
+  renderCart();
+})();
+
+</script>
+
+
+</body>
+</html>
