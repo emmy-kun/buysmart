@@ -77,22 +77,60 @@ export default function Header() {
         </nav>
       </div>
 
-      {/* Mobile Nav */}
-      {menuOpen && (
-        <nav className="md:hidden flex flex-col bg-[#0b0b0b] border-t border-[#222] px-6 py-5 gap-4">
-          <Link to="/" onClick={() => setMenuOpen(false)} className="text-white text-base py-2 hover:text-[#4DA3FF]">Home</Link>
-          <Link to="/products" onClick={() => setMenuOpen(false)} className="text-white text-base py-2 hover:text-[#4DA3FF]">Products</Link>
-          <Link to="/checkout" onClick={() => setMenuOpen(false)} className="text-white text-base py-2 hover:text-[#4DA3FF]">Checkout</Link>
-          {user ? (
-            <>
-              <Link to="/profile" onClick={() => setMenuOpen(false)} className="text-white text-base py-2 hover:text-[#4DA3FF]">Profile</Link>
-              <button onClick={() => { setMenuOpen(false); handleLogout(); }} className="text-left text-white text-base py-2 hover:text-[#4DA3FF]">Logout</button>
-            </>
-          ) : (
-            <Link to="/auth" onClick={() => setMenuOpen(false)} className="text-white text-base py-2 hover:text-[#4DA3FF]">Sign Up</Link>
+      {/* Mobile Nav — Professional Overlay */}
+      <div
+        className={`
+          md:hidden fixed inset-0 z-40 transition-all duration-300 ease-in-out
+          ${menuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}
+        `}
+      >
+        {/* Backdrop */}
+        <div
+          className="absolute inset-0 bg-black/80 backdrop-blur-sm"
+          onClick={() => setMenuOpen(false)}
+        />
+
+        {/* Menu Panel */}
+        <nav
+          className={`
+            absolute top-28 left-4 right-4 bg-[#111] border border-[#333] rounded-2xl shadow-2xl
+            flex flex-col items-center py-10 px-6 gap-2
+            transition-all duration-300 ease-out
+            ${menuOpen ? 'translate-y-0 opacity-100' : '-translate-y-4 opacity-0'}
+          `}
+        >
+          <div className="w-12 h-1 bg-[#333] rounded-full mb-6" />
+
+          {[
+            { to: '/', label: 'Home' },
+            { to: '/products', label: 'Products' },
+            { to: '/checkout', label: 'Checkout' },
+            ...(user ? [
+              { to: '/profile', label: 'Profile' },
+            ] : [
+              { to: '/auth', label: 'Sign Up' },
+            ]),
+          ].map((item) => (
+            <Link
+              key={item.to}
+              to={item.to}
+              onClick={() => setMenuOpen(false)}
+              className="w-full text-center text-white text-lg font-medium py-3 rounded-xl hover:bg-[#1a1a1a] hover:text-[#4DA3FF] transition-all duration-200"
+            >
+              {item.label}
+            </Link>
+          ))}
+
+          {user && (
+            <button
+              onClick={() => { setMenuOpen(false); handleLogout(); }}
+              className="w-full text-center text-red-400 text-lg font-medium py-3 rounded-xl hover:bg-[#1a1a1a] hover:text-red-300 transition-all duration-200 mt-2 border-t border-[#222] pt-4"
+            >
+              Logout
+            </button>
           )}
         </nav>
-      )}
+      </div>
     </header>
   );
 }
