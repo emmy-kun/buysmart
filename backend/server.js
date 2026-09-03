@@ -87,7 +87,12 @@ app.get('/api/paystack/verify', async (req, res) => {
   }
 });
 
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-  console.log(`BuySmart backend running on port ${PORT}`);
-});
+// Only start the server locally (not on Vercel)
+if (process.env.NODE_ENV !== 'production') {
+  const PORT = process.env.PORT || 5000;
+  app.listen(PORT, () => {
+    console.log(`BuySmart backend running on port ${PORT}`);
+  });
+}
+
+module.exports = app;
