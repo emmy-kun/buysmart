@@ -119,12 +119,20 @@ export default function Invoice() {
           <span>{formatNaira(total)}</span>
         </div>
 
-        <button
-          onClick={() => window.print()}
-          className="w-full py-3 bg-[#0b5ed7] text-white font-bold rounded-lg hover:bg-[#094bb5] transition-colors"
-        >
-          Print Invoice
-        </button>
+        <div className="flex flex-col sm:flex-row gap-3">
+          <button
+            onClick={() => window.print()}
+            className="flex-1 py-3 bg-[#0b5ed7] text-white font-bold rounded-lg hover:bg-[#094bb5] transition-colors"
+          >
+            Print Invoice
+          </button>
+          <Link
+            to="/"
+            className="flex-1 py-3 bg-white text-[#0b5ed7] font-bold rounded-lg border border-[#0b5ed7] hover:bg-[#f0f6ff] transition-colors text-center"
+          >
+            Continue Shopping
+          </Link>
+        </div>
       </div>
     </div>
   );
