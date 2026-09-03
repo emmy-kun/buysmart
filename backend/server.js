@@ -4,7 +4,24 @@ const cors = require('cors');
 const axios = require('axios');
 
 const app = express();
-app.use(cors());
+
+// CORS: allow Vercel frontend + local dev
+const allowedOrigins = [
+  process.env.CLIENT_URL?.replace(/\/$/, ''),
+  'http://localhost:5173',
+  'http://localhost:3000',
+].filter(Boolean);
+
+app.use(cors({
+  origin: function (origin, callback) {
+    // allow requests with no origin (mobile apps, curl, etc.)
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.includes(origin)) return callback(null, true);
+    callback(new Error('Not allowed by CORS'));
+  },
+  credentials: true,
+}));
+
 app.use(express.json());
 
 const PAYSTACK_SECRET = process.env.PAYSTACK_SECRET_KEY;
@@ -23,7 +40,7 @@ app.post('/api/paystack/initialize', async (req, res) => {
       email,
       amount: amount * 100, // Paystack expects kobo
       metadata,
-      callback_url: callback_url || `${process.env.CLIENT_URL}/invoice`,
+      callback_url: callback_url || `${process.env.CLIENT_URL?.replace(/\/$/, '')}/invoice`,
     };
 
     const response = await axios.post(
