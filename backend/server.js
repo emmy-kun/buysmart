@@ -5,9 +5,12 @@ const axios = require('axios');
 
 const app = express();
 
+// Production frontend URL (fallback if env var not set)
+const CLIENT_URL = process.env.CLIENT_URL?.replace(/\/$/, '') || 'https://buysmart-cart.vercel.app';
+
 // CORS: allow Vercel frontend + local dev
 const allowedOrigins = [
-  process.env.CLIENT_URL?.replace(/\/$/, ''),
+  CLIENT_URL,
   'http://localhost:5173',
   'http://localhost:3000',
 ].filter(Boolean);
@@ -52,7 +55,7 @@ app.post('/api/paystack/initialize', async (req, res) => {
       email,
       amount: amount * 100, // Paystack expects kobo
       metadata,
-      callback_url: callback_url || `${process.env.CLIENT_URL?.replace(/\/$/, '')}/invoice`,
+      callback_url: callback_url || `${CLIENT_URL}/invoice`,
     };
 
     const response = await axios.post(

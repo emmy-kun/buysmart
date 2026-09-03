@@ -3,7 +3,7 @@ import { useSearchParams } from 'react-router-dom';
 import axios from 'axios';
 import { useCart } from '../context/CartContext';
 
-const API = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+const API = import.meta.env.VITE_API_URL || 'https://backend-nine-kappa-25.vercel.app';
 
 export default function Invoice() {
   const [params] = useSearchParams();
