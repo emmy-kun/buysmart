@@ -1,6 +1,47 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import { AlertCircle } from 'lucide-react';
+
+function getFriendlyError(err) {
+  const code = err?.code || '';
+  const msg = err?.message || '';
+
+  if (code === 'auth/invalid-credential' || code === 'auth/wrong-password' || code === 'auth/user-not-found') {
+    return 'Invalid email or password. Please try again.';
+  }
+  if (code === 'auth/invalid-email') {
+    return 'Please enter a valid email address.';
+  }
+  if (code === 'auth/user-disabled') {
+    return 'This account has been disabled. Contact support for help.';
+  }
+  if (code === 'auth/too-many-requests') {
+    return 'Too many failed attempts. Please try again later.';
+  }
+  if (code === 'auth/email-already-in-use') {
+    return 'An account with this email already exists.';
+  }
+  if (code === 'auth/weak-password') {
+    return 'Password is too weak. Use at least 6 characters.';
+  }
+  if (code === 'auth/network-request-failed') {
+    return 'Network error. Please check your connection and try again.';
+  }
+  if (code === 'auth/requires-recent-login') {
+    return 'Please log in again to complete this action.';
+  }
+  if (code === 'auth/unauthorized-domain') {
+    return 'This domain is not authorized. Contact support.';
+  }
+
+  // Fallback: strip "Firebase: Error (auth/...)" noise
+  const cleaned = msg
+    .replace(/^Firebase:\s*/i, '')
+    .replace(/\s*\(auth\/[^)]+\)\.*$/, '')
+    .trim();
+  return cleaned || 'Something went wrong. Please try again.';
+}
 
 export default function Auth() {
   const [isLogin, setIsLogin] = useState(true);
@@ -25,7 +66,7 @@ export default function Auth() {
       }
       navigate('/profile');
     } catch (err) {
-      setError(err.message || 'Authentication failed');
+      setError(getFriendlyError(err));
     } finally {
       setLoading(false);
     }
@@ -46,7 +87,12 @@ export default function Auth() {
           {isLogin ? 'Log In' : 'Create Account'}
         </h2>
 
-        {error && <p className="text-red-400 text-sm text-center mb-4">{error}</p>}
+        {error && (
+          <div className="flex items-start gap-3 bg-red-500/10 border border-red-500/30 rounded-xl px-4 py-3 mb-5">
+            <AlertCircle size={18} className="text-red-400 mt-0.5 shrink-0" />
+            <p className="text-red-300 text-sm leading-relaxed">{error}</p>
+          </div>
+        )}
 
         <form onSubmit={handleSubmit} className="space-y-4">
           {!isLogin && (
