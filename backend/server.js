@@ -51,9 +51,17 @@ app.get('/', (req, res) => {
 app.post('/api/paystack/initialize', async (req, res) => {
   try {
     const { email, amount, metadata, callback_url } = req.body;
+
+    const numericAmount = Number(amount);
+    if (!Number.isFinite(numericAmount) || numericAmount <= 0) {
+      return res.status(400).json({
+        message: 'Invalid order total. Please refresh your cart and try again.',
+      });
+    }
+
     const payload = {
       email,
-      amount: amount * 100, // Paystack expects kobo
+      amount: Math.round(numericAmount * 100), // Paystack expects kobo
       metadata,
       callback_url: callback_url || `${CLIENT_URL}/invoice`,
     };

@@ -2,6 +2,12 @@ import { Link } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 import { Minus, Plus, Trash2 } from 'lucide-react';
 
+function formatNaira(amount) {
+  const num = Number(amount);
+  if (!Number.isFinite(num) || num < 0) return '₦0';
+  return `₦${num.toLocaleString()}`;
+}
+
 export default function Cart() {
   const { cart, removeItem, addItem, deleteItem, totalQty, totalPrice } = useCart();
   const items = Object.values(cart);
@@ -26,7 +32,7 @@ export default function Cart() {
                 <img src={item.image} alt={item.name} className="w-20 h-20 object-cover rounded-lg" />
                 <div className="flex-1">
                   <h3 className="text-[#0f172a] font-medium text-sm mb-1">{item.name}</h3>
-                  <p className="text-[#0b5ed7] font-bold text-sm">₦{item.price.toLocaleString()}</p>
+                  <p className="text-[#0b5ed7] font-bold text-sm">{formatNaira(item.price)}</p>
                 </div>
                 <div className="flex items-center gap-2">
                   <button onClick={() => removeItem(item.id)} className="w-7 h-7 border border-[#cbd5e1] rounded-md flex items-center justify-center hover:bg-[#e8f0ff]">
@@ -49,11 +55,11 @@ export default function Cart() {
             <h2 className="text-[#0f172a] text-lg font-bold mb-4">Order Summary</h2>
             <div className="flex justify-between text-sm text-[#334155] mb-3">
               <span>Subtotal</span>
-              <span>₦{totalPrice.toLocaleString()}</span>
+              <span>{formatNaira(totalPrice)}</span>
             </div>
             <div className="flex justify-between text-base font-bold text-[#0f172a] border-t border-[#e5e7eb] pt-3 mb-5">
               <span>Total</span>
-              <span>₦{totalPrice.toLocaleString()}</span>
+              <span>{formatNaira(totalPrice)}</span>
             </div>
             <Link to="/checkout" className="block w-full text-center py-3 bg-[#0b5ed7] text-white font-bold rounded-lg hover:bg-[#094bb5] transition-colors">
               Proceed to Checkout

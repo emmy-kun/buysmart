@@ -3,8 +3,15 @@ import { useNavigate } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 import { useAuth } from '../context/AuthContext';
 import axios from 'axios';
+import { AlertCircle } from 'lucide-react';
 
 const API = import.meta.env.VITE_API_URL || 'https://backend-nine-kappa-25.vercel.app';
+
+function formatNaira(amount) {
+  const num = Number(amount);
+  if (!Number.isFinite(num) || num < 0) return '₦0';
+  return `₦${num.toLocaleString()}`;
+}
 
 export default function Checkout() {
   const { cart, totalPrice, clearCart } = useCart();
@@ -12,38 +19,45 @@ export default function Checkout() {
   const navigate = useNavigate();
   const [form, setForm] = useState({ name: user?.displayName || '', phone: '', address: '' });
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
 
   const items = Object.values(cart);
+  const safeTotal = Number.isFinite(totalPrice) && totalPrice > 0 ? totalPrice : 0;
 
   const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
 
   const payWithPaystack = async () => {
-    if (!form.name || !form.phone || !form.address) {
-      alert('Please fill all shipping details');
+    setError('');
+
+    if (!form.name.trim() || !form.phone.trim() || !form.address.trim()) {
+      setError('Please fill in all shipping details.');
       return;
     }
     if (items.length === 0) {
-      alert('Your cart is empty');
+      setError('Your cart is empty. Add some products before checking out.');
+      return;
+    }
+    if (safeTotal <= 0) {
+      setError('Cart total is invalid. Please refresh the page or re-add your items.');
       return;
     }
 
     setLoading(true);
     try {
-      // Initialize transaction on backend
       const { data } = await axios.post(`${API}/api/paystack/initialize`, {
         email: user?.email || 'guest@buysmart.com',
-        amount: totalPrice,
+        amount: safeTotal,
         metadata: { name: form.name, phone: form.phone, address: form.address, items },
       });
 
       if (data?.data?.authorization_url) {
-        // Redirect to Paystack checkout
         window.location.href = data.data.authorization_url;
       } else {
-        alert('Payment initialization failed');
+        setError('Payment initialization failed. Please try again.');
       }
     } catch (err) {
-      alert(err.response?.data?.message || 'Payment error');
+      const msg = err.response?.data?.message || err.message || 'Something went wrong. Please try again.';
+      setError(msg);
     } finally {
       setLoading(false);
     }
@@ -74,18 +88,26 @@ export default function Checkout() {
         {/* Summary */}
         <div className="bg-white rounded-xl p-6 h-fit lg:sticky lg:top-24">
           <h2 className="text-base font-bold mb-4">Order Summary</h2>
+
+          {error && (
+            <div className="flex items-start gap-2.5 bg-red-500/10 border border-red-500/25 rounded-xl px-4 py-3 mb-4">
+              <AlertCircle size={16} className="text-red-500 mt-0.5 shrink-0" />
+              <p className="text-red-600 text-sm leading-relaxed">{error}</p>
+            </div>
+          )}
+
           <div className="flex justify-between text-sm text-[#334155] mb-2">
             <span>Subtotal</span>
-            <span>₦{totalPrice.toLocaleString()}</span>
+            <span>{formatNaira(safeTotal)}</span>
           </div>
           <div className="flex justify-between text-base font-bold text-[#0f172a] border-t border-[#e5e7eb] pt-3 mb-5">
             <span>Total</span>
-            <span>₦{totalPrice.toLocaleString()}</span>
+            <span>{formatNaira(safeTotal)}</span>
           </div>
           <button
             onClick={payWithPaystack}
-            disabled={loading}
-            className="w-full py-3.5 bg-[#0b5ed7] text-white font-bold rounded-lg hover:bg-[#094bb5] transition-colors disabled:opacity-60"
+            disabled={loading || safeTotal <= 0}
+            className="w-full py-3.5 bg-[#0b5ed7] text-white font-bold rounded-lg hover:bg-[#094bb5] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {loading ? 'Processing...' : 'Place Order'}
           </button>
