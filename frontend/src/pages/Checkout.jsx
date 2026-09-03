@@ -56,8 +56,12 @@ export default function Checkout() {
         setError('Payment initialization failed. Please try again.');
       }
     } catch (err) {
-      const msg = err.response?.data?.message || err.message || 'Something went wrong. Please try again.';
+      let msg = err.response?.data?.message || err.message || 'Something went wrong. Please try again.';
+      if (err.message === 'Network Error') {
+        msg = 'Unable to reach payment server. Please check your connection or try again shortly.';
+      }
       setError(msg);
+      console.error('Checkout error:', err);
     } finally {
       setLoading(false);
     }
