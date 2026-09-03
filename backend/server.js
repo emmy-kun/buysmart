@@ -29,7 +29,19 @@ const PAYSTACK_BASE = 'https://api.paystack.co';
 
 // Health check
 app.get('/api/health', (req, res) => {
-  res.json({ status: 'ok' });
+  res.json({ status: 'ok', service: 'BuySmart API' });
+});
+
+// Root route
+app.get('/', (req, res) => {
+  res.json({
+    message: 'BuySmart API is running',
+    endpoints: {
+      health: '/api/health',
+      paystackInitialize: 'POST /api/paystack/initialize',
+      paystackVerify: 'GET /api/paystack/verify?reference=xxx',
+    },
+  });
 });
 
 // Initialize Paystack transaction
