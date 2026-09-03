@@ -48,7 +48,7 @@ export default function Checkout() {
         email: user?.email || 'guest@buysmart.com',
         amount: safeTotal,
         metadata: { name: form.name, phone: form.phone, address: form.address, items },
-        callback_url: `${window.location.origin}/invoice`,
+        callback_url: window.location.origin,
       });
 
       if (data?.data?.authorization_url) {

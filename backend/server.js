@@ -66,7 +66,9 @@ app.post('/api/paystack/initialize', async (req, res) => {
       email,
       amount: Math.round(numericAmount * 100), // Paystack expects kobo
       metadata,
-      callback_url: callback_url ? callback_url.replace(/\/$/, '') + '/invoice' : `${CLIENT_URL}/invoice`,
+      callback_url: callback_url
+        ? callback_url.replace(/\/$/, '') + '/invoice'
+        : `${CLIENT_URL}/invoice`,
     };
 
     console.log('Paystack init payload:', { email, amount: payload.amount, callback_url: payload.callback_url });
